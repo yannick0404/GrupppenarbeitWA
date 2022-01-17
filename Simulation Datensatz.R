@@ -1,76 +1,85 @@
 ### Simulation des Datensatzes
 
-  # Spalte mit ids
-  id <- 1:100
-  daten <- data.frame(id)
-  
-  # Spalte Alter
+# Spalte Alter
   set.seed(1)
   alter <- rnorm(100, mean = 25, sd = 2)
-  daten$alter <- alter
-  
-  # Spalte Studienfach
+  daten <- data.frame(alter)
+
+# Spalte Studienfach
   studienfaecher <- as.factor( c("Statistik", "Data Science", "Mathe",
-                                 "Informatik") )
+                               "Informatik") )
   set.seed(12)
   studienfach <- sample(studienfaecher, size = 100, replace = TRUE,
-                        prob = c(6/17, 6/17, 4/17, 1/17))
+                      prob = c(6/17, 6/17, 4/17, 1/17))
   daten$studienfach <- studienfach
-  
-  # Spalte Interesse an Mathematik
+
+# Spalte Interesse an Mathematik
   interesse <- ordered(1:7)
   sim_interessem <- function(i){
-      if(daten$studienfach[i] == "Mathe" ){
-        return(sample(interesse, size = 1, 
-                      prob = c(1/30, 1/30, 2/30, 5/30, 5/30, 9/30, 7/30), 
-                      replace = TRUE))
-      }
+    if(daten$studienfach[i] == "Mathe" ){
+      return(sample(interesse, size = 1, 
+                  prob = c(1/30, 1/30, 2/30, 5/30, 5/30, 9/30, 7/30)))
+    }
     if(daten$studienfach[i] == "Statistik" ){
       return(sample(interesse, size = 1,
-                    prob = c(1/30, 2/30, 4/30, 6/30, 7/30, 6/30, 4/30), 
-                    replace = TRUE))
+                    prob = c(1/30, 2/30, 4/30, 6/30, 7/30, 6/30, 4/30)))
     }
     if(daten$studienfach[i] == "Data Science" ){
       return(sample(interesse, size = 1,
-                    prob = c(1/30, 3/30, 4/30, 7/30, 8/30, 5/30, 2/30), 
-                    replace = TRUE))
+                    prob = c(1/30, 3/30, 4/30, 7/30, 8/30, 5/30, 2/30)))
     }
     if(daten$studienfach[i] == "Informatik" ){
       return(sample(interesse, size = 1,
-                    prob = c(2/30, 5/30, 6/30, 7/30, 6/30, 3/30, 1/30), 
-                    replace = TRUE))
+                    prob = c(2/30, 5/30, 6/30, 7/30, 6/30, 3/30, 1/30)))
     }
   }
   
   set.seed(13)
   daten$interesse_mathe <- sapply( 1:100, sim_interessem )
-  
-  # Spalte Interesse an Informatik
+
+# Spalte Interesse an Informatik
   sim_interessei <- function(i){
     if(daten$studienfach[i] == "Mathe" ){
       return(sample(interesse, size = 1, 
-                    prob = c(3/30, 4/30, 6/30, 7/30, 5/30, 3/30, 2/30), 
-                    replace = TRUE))
+                    prob = c(3/30, 4/30, 6/30, 7/30, 5/30, 3/30, 2/30)))
     }
     if(daten$studienfach[i] == "Statistik" ){
       return(sample(interesse, size = 1,
-                    prob = c(1/30, 2/30, 5/30, 6/30, 7/30, 6/30, 3/30), 
-                    replace = TRUE))
+                    prob = c(1/30, 2/30, 5/30, 6/30, 7/30, 6/30, 3/30)))
     }
     if(daten$studienfach[i] == "Data Science" ){
       return(sample(interesse, size = 1,
-                    prob = c(1/30, 2/30, 4/30, 6/30, 8/30, 6/30, 3/30), 
-                    replace = TRUE))
+                    prob = c(1/30, 2/30, 4/30, 6/30, 8/30, 6/30, 3/30)))
     }
     if(daten$studienfach[i] == "Informatik" ){
       return(sample(interesse, size = 1,
-                    prob = c(1/30, 1/30, 1/30, 4/30, 9/30, 8/30, 6/30), 
-                    replace = TRUE))
+                    prob = c(1/30, 1/30, 1/30, 4/30, 9/30, 8/30, 6/30)))
     }
   }
   
   set.seed(16)
   daten$interesse_info <- sapply( 1:100, sim_interessei )
   
-
+# Spalte Mathe-LK (ja/nein)
+  jaNein <- c("ja","nein")
+  
+  sim_MatheLK <- function(i){
+    if(daten$studienfach[i] == "Mathe" ){
+      return(sample(jaNein, size = 1, prob = c(19/20, 1/20)))
+    }
+    if(daten$studienfach[i] == "Statistik" ){
+      return(sample(jaNein, size = 1, prob = c(17/20, 3/20)))
+    }
+    if(daten$studienfach[i] == "Data Science" ){
+      return(sample(jaNein, size = 1, prob = c(16/20, 4/20)))
+    }
+    if(daten$studienfach[i] == "Informatik" ){
+      return(sample(jaNein, size = 1, prob = c(13/20, 7/20)))
+    }
+  }
+  
+  set.seed(16)
+  daten$matheLK <- sapply( 1:100, sim_MatheLK )
+  
+  write.csv2(daten, "datensatzWA.csv")
   
