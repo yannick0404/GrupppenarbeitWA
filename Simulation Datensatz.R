@@ -64,18 +64,8 @@
   jaNein <- c("ja","nein")
   
   sim_MatheLK <- function(i){
-    if(daten$studienfach[i] == "Mathe" ){
-      return(sample(jaNein, size = 1, prob = c(19/20, 1/20)))
-    }
-    if(daten$studienfach[i] == "Statistik" ){
-      return(sample(jaNein, size = 1, prob = c(17/20, 3/20)))
-    }
-    if(daten$studienfach[i] == "Data Science" ){
-      return(sample(jaNein, size = 1, prob = c(16/20, 4/20)))
-    }
-    if(daten$studienfach[i] == "Informatik" ){
-      return(sample(jaNein, size = 1, prob = c(13/20, 7/20)))
-    }
+      return(sample(jaNein, size = 1, 
+                    prob = c( as.numeric( daten$interesse_mathe[i] )/10, (10 - as.numeric( daten$interesse_mathe[i] ))/10)))
   }
   
   set.seed(16)
