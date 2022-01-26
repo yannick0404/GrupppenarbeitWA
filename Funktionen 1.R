@@ -8,3 +8,11 @@
     return(c(summary(x, na.rm, ...), "sd" = sd(x, na.rm, ...)))
   }
 
+# b
+# Mache ich später fertig
+
+diskrstatkat <- function(x){
+  return(list(Summe = sum(x)))
+}
+  
+  
