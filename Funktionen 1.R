@@ -10,7 +10,7 @@ deskrstatmetr <- function(x, na.rm = FALSE, ...){
 }
 
 # b
-# Mache ich später fertig
+# Mache ich spaeter fertig
 
 deskrstatkat <- function(x){
   if(!is.factor(x)){
