@@ -33,8 +33,17 @@ deskrstatbivar_metr_dich <- function(x, y){
 
 # e
 
-kategoriesierung <- function(x){
+kategoriesierung <- function(x, type = 1, ...){
+  if(!is.ordered(x) && !is.numeric(x)){
+    stop("x is not a factor or numeric")
+  }
+  quants <- quants(x, c(0, .25, .75, 1))
   
+  return(list(paste("niedrig: zw. ", quants[1], " und ", quants[2]),
+              paste("mittel: zw. ", quants[2], " und ", quants[3]),
+              paste("hoch: zw. ", quants[3], " und ", quants[4])
+              )
+         )
 }
 
 # f
