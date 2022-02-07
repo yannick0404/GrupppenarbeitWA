@@ -22,9 +22,12 @@ deskrstatkat <- function(x){
 }
 
 # c
-
+# Funktion fuer deskriptive bivariate Statistiken fuer kategorielle Variablen
 deskrstatbivar_kat <- function(x, y){
-  
+  if(!(is.factor(x) && is.factor(y))){
+    stop("either x or y is not a factor")
+  }
+  return(list("Korrelation" = cor(x,y), "Kovarianz" = cov(x,y)))
 }
 
 # d
