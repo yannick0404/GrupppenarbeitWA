@@ -1,9 +1,11 @@
 ## Funktionen 1
 
 # a
+# Funktion fuer deskriptive Statistiken fuer metrische Variablen
 deskrstatmetr <- function(x, na.rm = FALSE, ...){
+  #pruefen ob x numerisch ist
   if(!is.numeric(x)){
-    stop("x is not numeric")
+    stop("x is not numeric")                                  
   }
   return(list(summary(x, na.rm, ...), "sd" = sd(x, na.rm, ...), 
               "10%-getrimmtes Mittel" = mean(x, trim = .1)))
