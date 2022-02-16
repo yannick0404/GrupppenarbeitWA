@@ -34,8 +34,27 @@ deskrstatbivar_kat <- function(x, y){
 
 # d
 
-deskrstatbivar_metr_dich <- function(x, y){
-  
+deskrstatbivar_metr_dich <- function(x, y, na.rm = T){
+  if(!(is.numeric(x)|| is.numeric(y))){
+    stop("no numeric input")
+  }
+  if(!(is.factor(x)|| is.factor(y))){
+    stop("no factor input")
+  }
+  if(is.numeric(x) == is.numeric(y)){
+    stop("x and y cannot be of the same type")
+  }
+  ## So tauschen, dass x immer numeric ist
+  if(!is.numeric(x)){
+    dummy = y
+    y = x
+    x = dummy
+  }
+  mean0 = mean(x[levels(y)[1]])
+  mean1 = mean(x[levels(y)[2]])
+  sd1 = sd(x[levels(y)[1]], na.rm = na.rm)
+  sd2 = sd(x[levels(y)[2]], na.rm = na.rm)
+  return(list("Mittel"=list(mean0, mean1), "Standardabweichungen" = list(sd0, sd1)))
 }
 
 # e
