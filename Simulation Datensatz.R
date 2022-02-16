@@ -4,7 +4,10 @@
   set.seed(1)
   alter <- rnorm(100, mean = 25, sd = 2)
   daten <- data.frame(alter)
-
+  
+  # Alter auf zwei Nachkommastellen runden
+  daten$alter <- round(daten$alter, digits = 1)
+  
 # Spalte Studienfach
   studienfaecher <- as.factor( c("Statistik", "Data Science", "Mathe",
                                "Informatik") )
@@ -71,5 +74,9 @@
   set.seed(16)
   daten$matheLK <- sapply( 1:100, sim_MatheLK )
   
-  write.csv2(daten, "datensatzWA.csv")
+# id
+  daten <- cbind(id = 1:100, daten)
+
+# CSV Datei erstellen
+  write.csv2(daten, "datensatzWA.csv", row.names = F)
   
