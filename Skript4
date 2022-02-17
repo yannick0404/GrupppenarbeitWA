@@ -11,6 +11,21 @@ str(datensatz)
 #$ interesse_info : int  3 3 6 5 7 6 5 7 7 5 ...
 #$ matheLK        : chr  "nein" "ja" "nein" "nein" ...
 
+## Variablen umschreiben in Faktoren
+
+daten$studienfach <- as.factor(daten$studienfach)
+daten$interesse_mathe <- as.factor(daten$interesse_mathe)
+daten$interesse_info <- as.factor(daten$interesse_info)
+daten$matheLK <- as.factor(daten$matheLK)
+str(daten)
+
+# data.frame':	100 obs. of  6 variables:
+# $ id             : int  1 2 3 4 5 6 7 8 9 10 ...
+# $ alter          : num  23.7 25.4 23.3 28.2 25.7 23.4 26 26.5 26.2 24.4 ...
+# $ studienfach    : Factor w/ 4 levels "Data Science",..: 4 3 2 4 4 4 4 1 4 4 ...
+# $ interesse_mathe: Factor w/ 7 levels "1","2","3","4",..: 3 6 3 5 2 5 4 3 7 5 ...
+# $ interesse_info : Factor w/ 7 levels "1","2","3","4",..: 3 3 6 5 7 6 5 7 7 5 ...
+# $ matheLK        : Factor w/ 2 levels "ja","nein": 2 1 2 2 1 2 2 1 2 2 ...
 
 # Funktionen aus Funktionen1
 #geeignete deskriptive Statistiken für metrische Variablen
@@ -64,3 +79,6 @@ deskrstatbivar_kat
 deskrstatbivar_metr_dich
 kategorisierung
 visualisierung
+
+visualisierung(daten$studienfach, daten$interesse_mathe, daten$interesse_info, daten$matheLK)
+
