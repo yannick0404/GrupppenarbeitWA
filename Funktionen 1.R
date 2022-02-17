@@ -73,10 +73,10 @@ kategorisierung <- function(x){
 
 visualisierung <- function(a, b, c, d){
     par(mfrow= c(2,2))
-pdf("Balkendiagramme.pdf")
+  
 hilfe_vis(a)
 hilfe_vis(b)
 hilfe_vis(c)
 hilfe_vis(d)
-dev.off()
+
 }
