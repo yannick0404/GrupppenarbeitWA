@@ -29,7 +29,7 @@ deskrstatbivar_kat <- function(x, y){
   if(!(is.factor(x) && is.factor(y))){
     stop("either x or y is not a factor")
   }
-  return(list("Korrelation" = cor(x,y), "Kovarianz" = cov(x,y)))
+  return(list("Korrelation" = cor(x,y,method = "kendall"), "Kovarianz" = cov(x,y)))
 }
 
 # d
@@ -54,7 +54,9 @@ deskrstatbivar_metr_dich <- function(x, y, na.rm = T){
   mean1 = mean(x[levels(y)[2]])
   sd1 = sd(x[levels(y)[1]], na.rm = na.rm)
   sd2 = sd(x[levels(y)[2]], na.rm = na.rm)
-  return(list("Mittel"=list(mean0, mean1), "Standardabweichungen" = list(sd0, sd1)))
+  cor = cor(x, y, method = "pearson")
+  return(list("Mittel"=list(mean0, mean1), "Standardabweichungen" = list(sd0, sd1),
+              "Korrelation"= cor))
 }
 
 # e
