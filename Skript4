@@ -1,8 +1,62 @@
 # Skript fuer die Deskription und Visualisierung
 
-# Datensatz laden
+# Datensatz laden und Struktur anzeigen
+datensatz <- read.csv("DatensatzWA.csv", sep = ";", dec = ",")
+str(datensatz)
+#'data.frame':	100 obs. of  6 variables:
+#  $ id             : int  1 2 3 4 5 6 7 8 9 10 ...
+#$ alter          : num  23.7 25.4 23.3 28.2 25.7 23.4 26 26.5 26.2 24.4 ...
+#$ studienfach    : chr  "Statistik" "Mathe" "Informatik" "Statistik" ...
+#$ interesse_mathe: int  3 6 3 5 2 5 4 3 7 5 ...
+#$ interesse_info : int  3 3 6 5 7 6 5 7 7 5 ...
+#$ matheLK        : chr  "nein" "ja" "nein" "nein" ...
+
 
 # Funktionen aus Funktionen1
+#geeignete deskriptive Statistiken für metrische Variablen
+
+
+# Alter
+deskrstatmetr(datensatz$alter)
+#[[1]]
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#20.60   23.98   25.20   25.22   26.40   29.80 
+
+#$sd
+#[1] 1.794137
+
+#$`10%-getrimmtes Mittel`
+#[1] 25.2375
+
+
+# Interesse Mathe
+deskrstatmetr(datensatz$interesse_mathe)
+#[[1]]
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#1.00    4.00    5.00    4.65    6.00    7.00 
+
+#$sd
+#[1] 1.559429
+
+#$`10%-getrimmtes Mittel`
+#[1] 4.725
+
+
+#Interesse Info
+deskrstatmetr(datensatz$interesse_info)
+#[[1]]
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#1.00    3.00    5.00    4.35    6.00    7.00 
+
+#$sd
+#[1] 1.695955
+
+#$`10%-getrimmtes Mittel`
+#[1] 4.4
+
+
+
+
 
 deskrstatmetr
 deskrstatkat
