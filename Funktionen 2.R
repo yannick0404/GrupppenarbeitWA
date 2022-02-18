@@ -1,14 +1,17 @@
 ## Funktionen 2 bzw Helferfunktionen
 
-quants <- function(x, probs){
-  return(as.vector(quantile(x, type = 1, probs = probs)))
+hilfe_vis <- function(x){
+  if(!is.factor(x)){
+    stop("x is not a factor")
+  }
+  barplot(table(x))
 }
 
-hilfe_vis <- function(x){
+hilfe_vis2 <- function(x){
 if(!is.factor(x)){
   stop("x is not a factor")
 }
-barplot(table(x))
+boxplot(x)
 }
 
 # Hilfsfunktion fur boxplots
