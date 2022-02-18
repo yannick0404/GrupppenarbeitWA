@@ -16,6 +16,10 @@ deskrstatmetr <- function(x, na.rm = FALSE, ...){
 
 # b
 
+# deskrstatkat - gibt deskriptive Statistiken zu einem kategoriellen Merkmal aus
+# Input: x - kategoriell skaliertes Merkmal
+# Output: Liste mit Anzahl Elementen und dem Modalwert
+
 deskrstatkat <- function(x){
   if(!is.factor(x)){
     stop("x is not a factor")
