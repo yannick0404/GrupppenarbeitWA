@@ -88,3 +88,15 @@ visualisierung <- function(a, b, c, d){
   hilfe_vis(d)
   
 }
+
+visualisierung2 <- function(a, b, c, d){
+  par(mfrow= c(2,2))
+  
+  hilfe_vis2(a)
+  hilfe_vis2(b)
+  hilfe_vis2(c)
+  hilfe_vis2(d)
+  
+}
+
+
