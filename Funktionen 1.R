@@ -24,7 +24,7 @@ deskrstatkat <- function(x){
   if(!is.factor(x)){
     stop("x is not a factor")
   }
-  return( list( Anzahl = length(x), "Modalwert" = max(table(x)) ) )
+  return( list( "Verteiung" = summary(x), "Anzahl" = length(x), "Modalwert" = max(table(x)) ) )
 }
 
 # c
@@ -56,11 +56,13 @@ deskrstatbivar_metr_dich <- function(x, y, na.rm = T){
   }
   mean0 = mean(x[levels(y)[1]])
   mean1 = mean(x[levels(y)[2]])
+  med0 = med(x[levels(y)[1]])
+  med0 = med(x[levels(y)[2]])
   sd1 = sd(x[levels(y)[1]], na.rm = na.rm)
   sd2 = sd(x[levels(y)[2]], na.rm = na.rm)
   cor = cor(x, y, method = "pearson")
-  return(list("Mittel"=list(mean0, mean1), "Standardabweichungen" = list(sd0, sd1),
-              "Korrelation"= cor))
+  return(list("Mittel"=list(mean0, mean1), "Mediane" = list(med0, med1), 
+  "Standardabweichungen" = list(sd0, sd1),"Korrelation"= cor))
 }
 
 # e
@@ -78,11 +80,11 @@ kategorisierung <- function(x){
 # f
 
 visualisierung <- function(a, b, c, d){
-    par(mfrow= c(2,2))
+  par(mfrow= c(2,2))
   
-hilfe_vis(a)
-hilfe_vis(b)
-hilfe_vis(c)
-hilfe_vis(d)
-
+  hilfe_vis(a)
+  hilfe_vis(b)
+  hilfe_vis(c)
+  hilfe_vis(d)
+  
 }
