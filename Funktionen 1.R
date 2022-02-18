@@ -102,7 +102,7 @@ ma <- function(a, b, c, d){
   matrix <- data.frame(a = a, b = b, c = c, d = d)
   return(matrix)
 }
-matrix<-ma(daten$alter, daten$interesse_info, daten$interesse_mathe, daten$matheLK)
+matrix<-ma(a, b, c, d)
 
 cor_ma <- cor(matrix)
 corrplot(cor_ma, method="color")
