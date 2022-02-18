@@ -94,3 +94,15 @@ visualisierung2 <- function(a,b,...){
   bp(a, b,...)
 }
 
+#install.packages("corrplot")
+library(corrplot)
+
+daten$matheLK <-daten$matheLK == "ja"
+ma <- function(a, b, c, d){
+  matrix <- data.frame(a = a, b = b, c = c, d = d)
+  return(matrix)
+}
+matrix<-ma(daten$alter, daten$interesse_info, daten$interesse_mathe, daten$matheLK)
+
+cor_ma <- cor(matrix)
+corrplot(cor_ma, method="color")
