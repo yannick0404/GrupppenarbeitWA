@@ -110,4 +110,4 @@ ma <- function(a, b, c, d){
 matrix<-ma(a, b, c, d)
 
 cor_ma <- cor(matrix)
-corrplot(cor_ma, method="color")
+corrplot(cor_ma, method="number")
