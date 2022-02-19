@@ -69,8 +69,10 @@ deskrstatkat(daten$studienfach)
 #[1] 100
 
 #$Modalwert
-#[1] 38
+#[1] Mathe
+#Levels: Data Science Informatik Mathe Statistik
 
+#Alter
 daten$alter <- as.factor(daten$alter)
 deskrstatkat(daten$alter)
 
@@ -78,7 +80,8 @@ deskrstatkat(daten$alter)
 #[1] 100
 
 #$Modalwert
-#[1] 5
+#[1] 25.7
+#55 Levels: 20.6 21 21.4 22 22.1 22.2 22.4 22.5 22.6 22.7 22.9 23.1 23.3 23.4 ... 29.8
 
 
 #c)
