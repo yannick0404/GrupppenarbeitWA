@@ -13,6 +13,8 @@ str(datensatz)
 
 
 # Funktionen aus Funktionen1
+
+#a)
 #geeignete deskriptive Statistiken für metrische Variablen
 
 
@@ -55,15 +57,86 @@ deskrstatmetr(datensatz$interesse_info)
 #[1] 4.4
 
 
+#b)
+#geeignete deskriptive Statistiken für kategoriale Variablen
 
 
+#Studienfach
+daten$studienfach <- as.factor(daten$studienfach)
+deskrstatkat(daten$studienfach)
 
-deskrstatkat
-deskrstatbivar_kat
+#$Anzahl
+#[1] 100
+
+#$Modalwert
+#[1] 38
+
+
+#c)
+#geeignete deskriptive bivariate Statistiken für den Zusammenhang zwischen zwei kategorialen Variablen
+
+
+#Interesse Mathe/Interesse Info
+deskrstatbivar_kat(daten$interesse_mathe, daten$interesse_info)
+
+#$Korrelation
+#[1] -0.1267399
+
+#$Kovarianz
+#[1] -0.4419192
+
+
+#Alter/Interesse Mathe
+deskrstatbivar_kat(daten$alter, daten$interesse_mathe)
+
+$Korrelation
+[1] 0.003369081
+
+$Kovarianz
+[1] 0.05621212
+
+
+#Alter/Interesse Info
+deskrstatbivar_kat(daten$alter, daten$interesse_info)
+
+#$Korrelation
+#[1] 0.1902937
+
+#$Kovarianz
+#[1] 0.7114646
+
+#Mathe Lk/Interesse Mathe
+daten$matheLK <-daten$matheLK == "ja"
+daten$matheLK <- as.numeric(daten$matheLK)
+## ???nun besteht daten$matheLK nur noch aus 0 und 1. Ich weiß nicht, ob das dann jetzt auch Sinn ergibt. Ich würde mal schätzen, 
+dass die Korrelation eigentlich höher sein sollte.???
+deskrstatbivar_kat(daten$matheLK, daten$interesse_mathe)
+
+#$Korrelation
+#[1] 0.2229783
+
+#$Kovarianz
+#[1] 0.2070707
+
+
+#d)
+#geeignete deskriptive bivariate Statistiken für den Zusammenhang zwischen einer metrischen und einer dichotomen Variable
+
+
 deskrstatbivar_metr_dich
+
+
+#e)
+#mindestens ordinal skalierte Variable wird quantilbasiert kategorisiert
+
+
 kategorisierung
 
 
+#f)
+#Visualisierung von mehreren kategorialen Variablen
+
+#barplot
 visualisierung <- function(a, b, c, d){
   par(mfrow= c(2,2))
   
@@ -71,11 +144,18 @@ visualisierung <- function(a, b, c, d){
   hilfe_vis(b,main="Alter", ylab="abs. Haeufigkeit" )
   hilfe_vis(c, main="Interesse_Mathe", xlab="Interesse-->",ylab="abs. Haeufigkeit")
   hilfe_vis(d, main="Interesse_Info", xlab="Interesse-->", ylab="abs. Haeufigkeit")
-  
 }
 visualisierung(daten$studienfach, daten$alter, daten$interesse_mathe, daten$interesse_info)
 
 
+#boxplot
+visualisierung2(daten$interesse_info, daten$alter, main="Interesse Mathe nach Alter", xlab="Alter in Jahren", ylab="Interesse")
+visualisierung2(daten$interesse_info, daten$interesse_mathe, main="Interesse Mathe/Info", xlab="Interesse Mathe", ylab=" Interesse Info")
+visualisierung2(daten$interesse_mathe, daten$matheLK, main="Mathe Lk/Interesse Mathe", xlab="Mathe Lk: NEIN/JA", ylab="Interesse")
+visualisierung2(daten$interesse_info, daten$alter, main="Interesse Info nach Alter", xlab="Alter in Jahren", ylab="Interesse")
+
+
+#corrplot
 matrix<-ma(daten$alter, daten$interesse_mathe, daten$interesse_info, daten$matheLK)
 
 cor_ma <- cor(matrix)
