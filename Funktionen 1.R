@@ -38,6 +38,10 @@ deskrstatbivar_kat <- function(x, y){
 
 # d
 
+# deskrstatbivar_metr_dich - gibt deskriptive Statistiken zu einem metrischem, bivariaten Merkmal aus
+# Input: x,y - metrische Merkmale
+# Output: Liste mit den beiden Mittelwerten und Standardabweichungen und der gemeinsamen Korrelation
+
 deskrstatbivar_metr_dich <- function(x, y, na.rm = T){
   if(!(is.numeric(x)|| is.numeric(y))){
     stop("no numeric input")
