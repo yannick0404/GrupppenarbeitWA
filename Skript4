@@ -137,16 +137,11 @@ kategorisierung
 #Visualisierung von mehreren kategorialen Variablen
 
 #barplot
-visualisierung <- function(a, b, c, d){
-  par(mfrow= c(2,2))
-  
-  hilfe_vis(a,main="Studienfächer",ylab="abs.Haeufigkeit",col="blue")
-  hilfe_vis(b,main="Alter", ylab="abs. Haeufigkeit" )
-  hilfe_vis(c, main="Interesse_Mathe", xlab="Interesse-->",ylab="abs. Haeufigkeit")
-  hilfe_vis(d, main="Interesse_Info", xlab="Interesse-->", ylab="abs. Haeufigkeit")
-}
-visualisierung(daten$studienfach, daten$alter, daten$interesse_mathe, daten$interesse_info)
-
+par(mfrow=c(2,2))
+visualisierung(daten$studienfach, main="Studienfächer",ylab="abs.Haeufigkeit",col="blue")
+visualisierung(daten$alter, main="Alter", ylab="abs. Haeufigkeit")
+visualisierung(daten$interesse_mathe, main="Interesse_Mathe", xlab="Interesse-->",ylab="abs. Haeufigkeit")
+visualisierung(daten$interesse_info, main="Interesse_Info", xlab="Interesse-->", ylab="abs. Haeufigkeit")
 
 #boxplot
 visualisierung2(daten$interesse_info, daten$alter, main="Interesse Mathe nach Alter", xlab="Alter in Jahren", ylab="Interesse")
