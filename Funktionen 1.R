@@ -81,6 +81,8 @@ kategorisierung <- function(x){
 
 # f
 
+#Visualisierung mittels Barplot
+
 visualisierung <- function(a, b, c, d){
     par(mfrow= c(2,2))
   
@@ -88,11 +90,10 @@ hilfe_vis(a)
 hilfe_vis(b)
 hilfe_vis(c)
 hilfe_vis(d)
-
 }
 
 #
-# Visualisierung mittelBoxplots, wobei a metrisch und b kategoriell.
+# Visualisierung mittels Boxplots, wobei a metrisch und b kategoriell.
 # Uber ... kann etwas an die boxplot Funktion uebergeben werden.
 visualisierung2 <- function(a,b,...){
   bp(a, b,...)
