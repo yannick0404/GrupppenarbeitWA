@@ -1,11 +1,10 @@
 ## Funktionen 2 bzw Helferfunktionen
 
-hilfe_vis <- function(x){
-  if(!is.factor(x)){
-    stop("x is not a factor")
-  }
-  barplot(table(x))
+hilfe_vis <- function(x,...){
+  
+  barplot(table(x),...)
 }
+
 
 # Hilfsfunktion fur boxplots
 bp <- function(a,b,...){
