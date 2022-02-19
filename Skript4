@@ -71,6 +71,15 @@ deskrstatkat(daten$studienfach)
 #$Modalwert
 #[1] 38
 
+daten$alter <- as.factor(daten$alter)
+deskrstatkat(daten$alter)
+
+#$Anzahl
+#[1] 100
+
+#$Modalwert
+#[1] 5
+
 
 #c)
 #geeignete deskriptive bivariate Statistiken für den Zusammenhang zwischen zwei kategorialen Variablen
