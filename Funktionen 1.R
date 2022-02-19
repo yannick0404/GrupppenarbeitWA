@@ -83,13 +83,13 @@ kategorisierung <- function(x){
 
 #Visualisierung mittels Barplot
 
-visualisierung <- function(a, b, c, d){
+visualisierung <- function(a, b, c, d,...){
     par(mfrow= c(2,2))
   
-hilfe_vis(a)
-hilfe_vis(b)
-hilfe_vis(c)
-hilfe_vis(d)
+hilfe_vis(a,...)
+hilfe_vis(b,...)
+hilfe_vis(c,...)
+hilfe_vis(d,...)
 }
 
 #
