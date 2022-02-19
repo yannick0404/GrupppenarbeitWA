@@ -38,7 +38,7 @@ deskrstatbivar_kat <- function(x, y){
 
 # d
 
-# deskrstatbivar_metr_dich - gibt deskriptive Statistiken zu einem metrischem, bivariaten Merkmal aus
+# deskrstatbivar_metr_dich - gibt deskriptive Statistiken zu zwei metrischen Merkmalen aus
 # Input: x,y - metrische Merkmale
 # Output: Liste mit den beiden Mittelwerten und Standardabweichungen und der gemeinsamen Korrelation
 
