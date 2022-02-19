@@ -24,7 +24,7 @@ deskrstatkat <- function(x){
   if(!is.factor(x)){
     stop("x is not a factor")
   }
-  return( list( Anzahl = length(x), "Modalwert" = max(table(x)) ) )
+  return( list( Anzahl = length(x), "Modalwert" = x[max(table(x))] ) )
 }
 
 # c
