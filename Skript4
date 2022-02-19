@@ -76,3 +76,7 @@ visualisierung <- function(a, b, c, d){
 visualisierung(daten$studienfach, daten$alter, daten$interesse_mathe, daten$interesse_info)
 
 
+matrix<-ma(daten$alter, daten$interesse_mathe, daten$interesse_info, daten$matheLK)
+
+cor_ma <- cor(matrix)
+corrplot(cor_ma, method="number")
