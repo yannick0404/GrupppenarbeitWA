@@ -4,7 +4,12 @@
 library(fabricatr)
 
 # a
-# Funktion fuer deskriptive Statistiken fuer metrische Variablen
+
+# deskrstatmetr - gibt deskriptive Statistiken zu einem metrischen Merkmal aus
+# Input: x - metrisch skaliertes Merkmal
+# Output: Liste mit der Standardabweichung, der R-internen Summary und dem 
+# 10%-getrimmten Mittel
+
 deskrstatmetr <- function(x, na.rm = FALSE, ...){
   #pruefen ob x numerisch ist
   if(!is.numeric(x)){
