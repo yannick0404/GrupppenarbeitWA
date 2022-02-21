@@ -180,7 +180,7 @@ visualisierung2(daten$interesse_info, daten$alter, main="Interesse Info nach Alt
 
 
 #corrplot
-matrix<-ma(daten$alter, daten$interesse_mathe, daten$interesse_info, daten$matheLK)
+matrix<-ma(daten$alter, daten$interesse_mathe, daten$interesse_info)
 
 cor_ma <- cor(matrix)
 corrplot(cor_ma, method="number")
