@@ -135,8 +135,19 @@ deskrstatbivar_kat(daten$matheLK, daten$interesse_mathe)
 #geeignete deskriptive bivariate Statistiken für den Zusammenhang zwischen einer metrischen und einer dichotomen Variable
 
 
-deskrstatbivar_metr_dich
+deskrstatbivar_metr_dich(datensatz$alter, factor(datensatz$matheLK))
 
+#$Mittel
+#[1] 25.616 24.822
+
+#$Standardabweichungen
+#[1] 1.993188 1.486303
+
+#$Korrelation
+#[1] -0.222391
+
+# Leute mit Mathe-LK sind im Schnitt aelter (Mittel von 25.6 Jahren)
+# Das Alter der Person korreliert mit dem Interesse zu Mathe (in Form der Teilnahme am Mathe-LK) positiv.
 
 #e)
 #mindestens ordinal skalierte Variable wird quantilbasiert kategorisiert
