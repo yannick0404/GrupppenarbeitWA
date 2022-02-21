@@ -74,7 +74,7 @@ deskrstatbivar_metr_dich <- function(x, y, na.rm = T){
   sd1 = sd(x[levels(y)[1]], na.rm = na.rm)
   sd2 = sd(x[levels(y)[2]], na.rm = na.rm)
   cor = cor(x, as.numeric(y), method = "pearson")
-  return(list("Mittel"=list(mean0, mean1), "Standardabweichungen" = list(sd0, sd1),
+  return(list("Mittel"=list(mean0, mean1), "Standardabweichungen" = list(sd1, sd2),
               "Korrelation"= cor))
 }
 
