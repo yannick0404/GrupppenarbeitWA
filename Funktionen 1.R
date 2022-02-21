@@ -33,7 +33,11 @@ deskrstatkat <- function(x){
 }
 
 # c
-# Funktion fuer deskriptive bivariate Statistiken fuer kategorielle Variablen
+
+# deskrstatbivar_kat - gibt deskriptive Statistiken zu zwei kategoriellen Variablen aus
+# Input: x,y - kategoriell skaliertes Merkmal
+# Output: Liste mit der Korrelation nach Kendall und der Kovarianz beider Merkmale
+
 deskrstatbivar_kat <- function(x, y){
   if(!(is.factor(x) && is.factor(y))){
     stop("either x or y is not a factor")
