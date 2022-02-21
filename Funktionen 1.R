@@ -47,9 +47,11 @@ deskrstatbivar_kat <- function(x, y){
 
 # d
 
-# deskrstatbivar_metr_dich - gibt deskriptive Statistiken zu zwei metrischen Merkmalen aus
-# Input: x,y - metrische Merkmale
-# Output: Liste mit den beiden Mittelwerten und Standardabweichungen und der gemeinsamen Korrelation
+# deskrstatbivar_metr_dich - gibt deskriptive Statistiken zu einem metrischen und einem dichotomen Merkmal aus
+# Input: x - metrisches Merkmal
+# y - binaere Variable
+# Output: Liste mit den beiden Mittelwerten (aufgeteilt nach der dichotomen Variable)
+# und Standardabweichungen und der gemeinsamen Korrelation
 
 deskrstatbivar_metr_dich <- function(x, y, na.rm = T){
   if(!(is.numeric(x)|| is.numeric(y))){
