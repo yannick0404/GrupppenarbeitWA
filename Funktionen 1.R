@@ -49,7 +49,7 @@ deskrstatbivar_kat <- function(x, y){
 
 # deskrstatbivar_metr_dich - gibt deskriptive Statistiken zu einem metrischen und einem dichotomen Merkmal aus
 # Input: x - metrisches Merkmal
-# y - binaere Variable
+# y - binaere Variable als Faktor
 # Output: Liste mit den beiden Mittelwerten (aufgeteilt nach der dichotomen Variable)
 # und Standardabweichungen und der gemeinsamen Korrelation
 
@@ -73,7 +73,7 @@ deskrstatbivar_metr_dich <- function(x, y, na.rm = T){
   mean1 = mean(x[levels(y)[2]])
   sd1 = sd(x[levels(y)[1]], na.rm = na.rm)
   sd2 = sd(x[levels(y)[2]], na.rm = na.rm)
-  cor = cor(x, y, method = "pearson")
+  cor = cor(x, as.numeric(y), method = "pearson")
   return(list("Mittel"=list(mean0, mean1), "Standardabweichungen" = list(sd0, sd1),
               "Korrelation"= cor))
 }
