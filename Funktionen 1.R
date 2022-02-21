@@ -100,12 +100,12 @@ visualisierung2 <- function(a,b,...){
 #install.packages("corrplot")
 library(corrplot)
 
-daten$matheLK <-daten$matheLK == "ja"
-ma <- function(a, b, c, d){
-  matrix <- data.frame(a = a, b = b, c = c, d = d)
+
+ma <- function(a, b, c){
+  matrix <- data.frame(a = a, b = b, c = c)
   return(matrix)
 }
-matrix<-ma(a, b, c, d)
+matrix<-ma(a, b, c)
 
 cor_ma <- cor(matrix)
 corrplot(cor_ma, method="number")
