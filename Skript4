@@ -43,6 +43,7 @@ deskrstatmetr(datensatz$interesse_mathe)
 #$`10%-getrimmtes Mittel`
 #[1] 4.725
 
+#Interesse an Mathe deutlich
 
 #Interesse Info
 deskrstatmetr(datensatz$interesse_info)
@@ -56,6 +57,7 @@ deskrstatmetr(datensatz$interesse_info)
 #$`10%-getrimmtes Mittel`
 #[1] 4.4
 
+#Interesse an Informatik mittelmaeßig
 
 #b)
 #geeignete deskriptive Statistiken für kategoriale Variablen
@@ -71,6 +73,8 @@ deskrstatkat(daten$studienfach)
 #$Modalwert
 #[1] Mathe
 #Levels: Data Science Informatik Mathe Statistik
+
+#Die meisten Probanden studieren Mathematik
 
 #Alter
 daten$alter <- as.factor(daten$alter)
@@ -97,6 +101,8 @@ deskrstatbivar_kat(daten$interesse_mathe, daten$interesse_info)
 #$Kovarianz
 #[1] -0.4419192
 
+#Geringe negative Korrelation, aber deutlichere negative Kovarianz zwischen Interesse Mathe und Interesse Informatik
+
 
 #Alter/Interesse Mathe
 deskrstatbivar_kat(daten$alter, daten$interesse_mathe)
@@ -107,6 +113,8 @@ $Korrelation
 $Kovarianz
 [1] 0.05621212
 
+#Korrelation und Kovarianz unbedeutend gering
+
 
 #Alter/Interesse Info
 deskrstatbivar_kat(daten$alter, daten$interesse_info)
@@ -116,6 +124,9 @@ deskrstatbivar_kat(daten$alter, daten$interesse_info)
 
 #$Kovarianz
 #[1] 0.7114646
+
+#Starke positive Kovarianz zwischen dem Alter der Personen und dem Interesse an Informatik
+
 
 #Mathe Lk/Interesse Mathe
 daten$matheLK <-daten$matheLK == "ja"
