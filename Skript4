@@ -101,7 +101,7 @@ deskrstatbivar_kat(daten$interesse_mathe, daten$interesse_info)
 #$Kovarianz
 #[1] -0.4419192
 
-#Geringe negative Korrelation, aber deutlichere negative Kovarianz zwischen Interesse Mathe und Interesse Informatik
+#Geringe negative Korrelation, aber deutlichere negative Kovarianz zwischen Interesse an Mathematik und Interesse an Informatik
 
 
 #Alter/Interesse Mathe
@@ -113,7 +113,7 @@ $Korrelation
 $Kovarianz
 [1] 0.05621212
 
-#Korrelation und Kovarianz unbedeutend gering
+#Korrelation und Kovarianz unbedeutend gering zwischen dem Alter der Personen un dem Interesse an Mathematik
 
 
 #Alter/Interesse Info
@@ -131,8 +131,7 @@ deskrstatbivar_kat(daten$alter, daten$interesse_info)
 #Mathe Lk/Interesse Mathe
 daten$matheLK <-daten$matheLK == "ja"
 daten$matheLK <- as.numeric(daten$matheLK)
-## ???nun besteht daten$matheLK nur noch aus 0 und 1. Ich weiß nicht, ob das dann jetzt auch Sinn ergibt. Ich würde mal schätzen, 
-dass die Korrelation eigentlich höher sein sollte.???
+
 deskrstatbivar_kat(daten$matheLK, daten$interesse_mathe)
 
 #$Korrelation
@@ -140,6 +139,8 @@ deskrstatbivar_kat(daten$matheLK, daten$interesse_mathe)
 
 #$Kovarianz
 #[1] 0.2070707
+
+#Geringe Korrelation und Kovarianz zwischen dem Interesse an Mathematik und dem belegen, bzw. nicht belegen eines Mathe-LK Kurses in der Schule
 
 
 #d)
@@ -173,10 +174,12 @@ range(x[which(kategorisierung(x) == levels(kategorisierung(x))[3])])
 
 # Man erkennt die einzelnen quantilsbasierten Ranges der Alter
 
+
 #f)
 #Visualisierung von mehreren kategorialen Variablen
 
 #barplot
+
 par(mfrow=c(2,2))
 visualisierung(daten$studienfach, main="Studienfächer",ylab="abs.Haeufigkeit",col="blue")
 visualisierung(daten$alter, main="Alter", ylab="abs. Haeufigkeit")
@@ -184,6 +187,7 @@ visualisierung(daten$interesse_mathe, main="Interesse_Mathe", xlab="Interesse-->
 visualisierung(daten$interesse_info, main="Interesse_Info", xlab="Interesse-->", ylab="abs. Haeufigkeit")
 
 #boxplot
+
 visualisierung2(daten$interesse_info, daten$alter, main="Interesse Mathe nach Alter", xlab="Alter in Jahren", ylab="Interesse")
 visualisierung2(daten$interesse_info, daten$interesse_mathe, main="Interesse Mathe/Info", xlab="Interesse Mathe", ylab=" Interesse Info")
 visualisierung2(daten$interesse_mathe, daten$matheLK, main="Mathe Lk/Interesse Mathe", xlab="Mathe Lk: NEIN/JA", ylab="Interesse")
@@ -191,6 +195,7 @@ visualisierung2(daten$interesse_info, daten$alter, main="Interesse Info nach Alt
 
 
 #corrplot
+
 matrix<-ma(daten$alter, daten$interesse_mathe, daten$interesse_info)
 
 cor_ma <- cor(matrix)
