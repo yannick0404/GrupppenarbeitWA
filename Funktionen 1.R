@@ -85,6 +85,7 @@ kategorisierung <- function(x){
 # f
 
 #Visualisierung mittels Barplot
+# Ueber ... kann etwas an die barplot Funktion uebergeben werden
 
 visualisierung <- function(a,...){
   hilfe_vis(a,...)
@@ -92,14 +93,17 @@ visualisierung <- function(a,...){
 
 
 # Visualisierung mittels Boxplots, wobei a metrisch und b kategoriell.
-# Uber ... kann etwas an die boxplot Funktion uebergeben werden.
+# Ueber ... kann etwas an die boxplot Funktion uebergeben werden.
 visualisierung2 <- function(a,b,...){
   bp(a, b,...)
 }
 
+
+#Visualisierung mittels Corrplot
+#numerische Matrix noetig
+
 #install.packages("corrplot")
 library(corrplot)
-
 
 ma <- function(a, b, c){
   matrix <- data.frame(a = a, b = b, c = c)
