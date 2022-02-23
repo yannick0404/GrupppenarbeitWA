@@ -140,6 +140,22 @@ deskrstatbivar_kat(daten$matheLK, daten$interesse_mathe)
 #$Kovarianz
 #[1] 0.2070707
 
+install.packages("DescTools")
+library(DescTools)
+
+
+tab <- table(daten$matheLK, daten$interesse_mathe)
+tab 
+Assocs(tab)
+
+#                       estimate  lwr.ci  upr.ci
+#Phi Coeff.               0.2923       -       -
+#Contingency Coeff.       0.2805       -       -
+#Cramer V                 0.2923  0.0000  0.4158
+#Pearson Correlation      0.2642  0.0715  0.4379
+#Spearman Correlation     0.2513  0.0577  0.4267
+
+
 #Geringe Korrelation und Kovarianz zwischen dem Interesse an Mathematik und dem belegen, bzw. nicht belegen eines Mathe-LK Kurses in der Schule
 
 
