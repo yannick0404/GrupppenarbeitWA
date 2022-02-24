@@ -75,10 +75,10 @@ deskrstatkat(daten$studienfach)
 #[1] 100
 
 #$Modalwert
-#[1] Mathe
-#Levels: Data Science Informatik Mathe Statistik
+#Data Science 
+#          38 
 
-#Die meisten Personen studieren Mathematik
+#Die meisten Personen studieren Data Science
 
 #Alter
 daten$alter <- as.factor(daten$alter)
@@ -88,10 +88,10 @@ deskrstatkat(daten$alter)
 #[1] 100
 
 #$Modalwert
-#[1] 25.7
-#55 Levels: 20.6 21 21.4 22 22.1 22.2 22.4 22.5 22.6 22.7 22.9 23.1 23.3 23.4 ... 29.8
+#24.9 
+#   5 
 
-#Der haeufigste Alterswert der Personen liegt bei 25,7 Jahren. Passt in Betrachtung des Medians und arithmetischem Mittels.
+#Der haeufigste Alterswert der Personen liegt bei 24,9 Jahren. Passt in Betrachtung des Medians und arithmetischem Mittels.
 
 
 #c)
