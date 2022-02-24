@@ -25,11 +25,18 @@ deskrstatmetr <- function(x, na.rm = FALSE, ...){
 # Input: x - kategoriell skaliertes Merkmal
 # Output: Liste mit Anzahl Elementen und dem Modalwert
 
+modalwert <- function(x){
+  for(i in 1:length(table(x))){
+    if(table(x)[i] == max(table(x))){
+      return(table(x)[i])
+    }
+  }
+}
 deskrstatkat <- function(x){
   if(!is.factor(x)){
     stop("x is not a factor")
   }
-  return( list( Anzahl = length(x), "Modalwert" = x[max(table(x))] ) )
+  return( list( Anzahl = length(x), "Modalwert" = modalwert(x) ) )
 }
 
 # c
