@@ -1,0 +1,244 @@
+# Skript fuer die Deskription und Visualisierung
+
+# Datensatz laden und Struktur anzeigen
+datensatz <- read.csv("DatensatzWA.csv", sep = ";", dec = ",")
+str(datensatz)
+#'data.frame':	100 obs. of  6 variables:
+#  $ id             : int  1 2 3 4 5 6 7 8 9 10 ...
+#$ alter          : num  23.7 25.4 23.3 28.2 25.7 23.4 26 26.5 26.2 24.4 ...
+#$ studienfach    : chr  "Statistik" "Mathe" "Informatik" "Statistik" ...
+#$ interesse_mathe: int  3 6 3 5 2 5 4 3 7 5 ...
+#$ interesse_info : int  3 3 6 5 7 6 5 7 7 5 ...
+#$ matheLK        : chr  "nein" "ja" "nein" "nein" ...
+
+
+# Funktionen aus Funktionen1
+
+#a)
+#geeignete deskriptive Statistiken für metrische Variablen
+
+
+# Alter
+deskrstatmetr(datensatz$alter)
+#[[1]]
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#20.60   23.98   25.20   25.22   26.40   29.80 
+
+#zentrale Streeung um den Wert 25
+
+#$sd
+#[1] 1.794137
+
+#$`10%-getrimmtes Mittel`
+#[1] 25.2375
+
+
+# Interesse Mathe
+deskrstatmetr(datensatz$interesse_mathe)
+#[[1]]
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#1.00    4.00    5.00    4.65    6.00    7.00 
+
+# Interesse am Fach Mathematik überdurchschnittlich
+
+#$sd
+#[1] 1.559429
+
+#$`10%-getrimmtes Mittel`
+#[1] 4.725
+
+
+#Interesse Info
+deskrstatmetr(datensatz$interesse_info)
+#[[1]]
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#1.00    3.00    5.00    4.35    6.00    7.00 
+
+#Interess am Fach Informatik durchschnittlich
+
+#$sd
+#[1] 1.695955
+
+#$`10%-getrimmtes Mittel`
+#[1] 4.4
+
+
+#b)
+#geeignete deskriptive Statistiken für kategoriale Variablen
+
+
+#Studienfach
+daten$studienfach <- as.factor(daten$studienfach)
+deskrstatkat(daten$studienfach)
+
+#$Anzahl
+#[1] 100
+
+#$Modalwert
+#Data Science 
+#          38 
+
+#Die meisten Personen studieren Data Science
+
+#Alter
+daten$alter <- as.factor(daten$alter)
+deskrstatkat(daten$alter)
+
+#$Anzahl
+#[1] 100
+
+#$Modalwert
+#24.9 
+#   5 
+
+#Der haeufigste Alterswert der Personen liegt bei 24,9 Jahren. Passt in Betrachtung des Medians und arithmetischem Mittels.
+
+
+#c)
+#geeignete deskriptive bivariate Statistiken für den Zusammenhang zwischen zwei kategorialen Variablen
+
+
+#Interesse Mathe/Interesse Info
+deskrstatbivar_kat(daten$interesse_mathe, daten$interesse_info)
+
+#$Korrelation
+#[1] -0.1267399
+
+#$Kovarianz
+#[1] -0.4419192
+
+#Geringe negative Korrelation, aber deutlichere negative Kovarianz zwischen Interesse an der Mathematik und Interesse an der Informatik
+#-> Um so mehr Interesse an dem einen Fach, um so weniger Interesse an dem anderen Fach
+
+
+#Alter/Interesse Mathe
+deskrstatbivar_kat(daten$alter, daten$interesse_mathe)
+
+$Korrelation
+[1] 0.003369081
+
+$Kovarianz
+[1] 0.05621212
+
+#Korrelation und Kovarianz unbedeutend gering zwischen dem Alter der Personen und dem Interesse an der Mathematik
+#-> keine Aussage moeglich
+
+
+#Alter/Interesse Info
+deskrstatbivar_kat(daten$alter, daten$interesse_info)
+
+#$Korrelation
+#[1] 0.1902937
+
+#$Kovarianz
+#[1] 0.7114646
+
+#Starke positive Kovarianz zwischen dem Alter der Personen und dem Interesse an der Informatik
+#-> Um so aelter die Personen sind, um so staerker ist das Interesse an der Informatik
+
+
+#Mathe Lk/Interesse Mathe
+daten$matheLK <-daten$matheLK == "ja"
+daten$matheLK <- as.numeric(daten$matheLK)
+
+deskrstatbivar_kat(daten$matheLK, daten$interesse_mathe)
+
+#$Korrelation
+#[1] 0.2229783
+
+#$Kovarianz
+#[1] 0.2070707
+
+install.packages("DescTools")
+library(DescTools)
+
+
+tab <- table(daten$matheLK, daten$interesse_mathe)
+tab 
+Assocs(tab)
+
+#                       estimate  lwr.ci  upr.ci
+#Phi Coeff.               0.2923       -       -
+#Contingency Coeff.       0.2805       -       -
+#Cramer V                 0.2923  0.0000  0.4158
+#Pearson Correlation      0.2642  0.0715  0.4379
+#Spearman Correlation     0.2513  0.0577  0.4267
+
+
+#Geringe Korrelation und Kovarianz zwischen dem Interesse an der Mathematik und dem belegen, bzw. nicht belegen eines Mathe-LK Kurses in der Schule
+#-> geringer positiver Zusammenhang zwischen Mathe-LK und dem Interesse an der Mathematik
+
+
+#d)
+#geeignete deskriptive bivariate Statistiken für den Zusammenhang zwischen einer metrischen und einer dichotomen Variable
+
+
+deskrstatbivar_metr_dich(datensatz$alter, factor(datensatz$matheLK))
+
+#$Mittel
+#[1] 25.616 24.822
+
+#$Standardabweichungen
+#[1] 1.993188 1.486303
+
+#$Korrelation
+#[1] -0.222391
+
+#Leute mit Mathe-LK sind im Schnitt aelter (Mittel von 25.6 Jahren)
+#Das Alter der Person korreliert mit dem Interesse zu Mathe (in Form der Teilnahme am Mathe-LK) positiv.
+
+
+#e)
+#mindestens ordinal skalierte Variable wird quantilbasiert kategorisiert
+
+x <- datensatz$alter
+range(x[which(kategorisierung(x) == levels(kategorisierung(x))[1])])
+# 20.6 24.5
+range(x[which(kategorisierung(x) == levels(kategorisierung(x))[2])])
+# 24.7 26.1
+range(x[which(kategorisierung(x) == levels(kategorisierung(x))[3])])
+# 26.2 29.8
+
+# Man erkennt die einzelnen quantilsbasierten Ranges der Alter
+
+
+#f)
+#Visualisierung von mehreren kategorialen Variablen
+
+#barplot
+
+par(mfrow=c(2,2))
+visualisierung(daten$studienfach, main="Studienfächer",ylab="abs.Haeufigkeit",col="blue")
+visualisierung(daten$alter, main="Alter", ylab="abs. Haeufigkeit")
+visualisierung(daten$interesse_mathe, main="Interesse_Mathe", xlab="Interesse-->",ylab="abs. Haeufigkeit")
+visualisierung(daten$interesse_info, main="Interesse_Info", xlab="Interesse-->", ylab="abs. Haeufigkeit")
+
+#Viele Data Science und Statistik Studienten (jeweils ca. 35 Personen), ca. 20 Mathestudenten und sehr wenige Informatikstudneten
+#Alter zwischen 20 und 30 Jahren, die meisten Persone sind zwischen 23 und 26 Jahren alt
+#Interesse and der Mathematik ueberdurchschnittlich hoch (zwischen 4-6)
+#Interesse an der Informatik durchschnittlich (zwischen 3-6)
+
+
+#boxplot
+
+visualisierung2(daten$interesse_info, daten$alter, main="Interesse Mathe nach Alter", xlab="Alter in Jahren", ylab="Interesse")
+visualisierung2(daten$interesse_info, daten$interesse_mathe, main="Interesse Mathe/Info", xlab="Interesse Mathe", ylab=" Interesse Info")
+visualisierung2(daten$interesse_mathe, daten$matheLK, main="Mathe Lk/Interesse Mathe", xlab="Mathe Lk: NEIN/JA", ylab="Interesse")
+visualisierung2(daten$interesse_info, daten$alter, main="Interesse Info nach Alter", xlab="Alter in Jahren", ylab="Interesse")
+
+#Interesse an der Mathematik nicht abhaengig vom Alter
+#Interesse an der Informatik nicht abhaengig vom Interesse an der Mathematik, aber Trend sichtbar, dass Interesse an der Informatik hoeher ist, wenn das Interesse 
+#an der Mathematik niedriger ist
+#Interesse an der Mathematik hoeher, wenn man zuvor eine Mathe-LK belegt hatte, sowie geringere Streuung der Interessewerte
+#Interesse an der Informatik nicht abhaengig vom Alter, Informatikstudenten sind anscheinend aber eher aeltere Studenten
+
+
+#corrplot
+
+matrix<-ma(daten$alter, daten$interesse_mathe, daten$interesse_info)
+
+cor_ma <- cor(matrix)
+corrplot(cor_ma, method="number")
+
+#Interesse an der Mathematik und Informatik nicht abhaengig vom Alter. Bestaetigt vorherige Ergebnisse
+#Korrelation zwischen Interesse and der Mathematik und Informatik korrelieren schwach negativ
